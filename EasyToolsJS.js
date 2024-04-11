@@ -4,9 +4,9 @@ function send_post(file_name, data, callback) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                callback(null, xhr.responseText); // Envía el resultado al callback
+                callback(null, xhr.responseText);
             } else {
-                callback('Hubo un error en la solicitud.', null); // Envía el error al callback
+                callback('Hubo un error en la solicitud.', null);
             }
         }
     };
@@ -16,15 +16,15 @@ function send_post(file_name, data, callback) {
     xhr.send(data);
 }
 
-function send_post_get(file_name, data) {
+function send_post_get(file_name, data, callback) {
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                return xhr.responseText
+                callback(null, xhr.responseText);
             } else {
-                return 'Hubo un error en la solicitud.'
+                callback('Hubo un error en la solicitud.', null);
             }
         }
     };
