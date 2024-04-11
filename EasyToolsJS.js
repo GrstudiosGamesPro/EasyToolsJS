@@ -1,12 +1,12 @@
-function send_post(file_name, data) {
+function send_post(file_name, data, callback) {
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                return xhr.responseText
+                callback(null, xhr.responseText); // Envía el resultado al callback
             } else {
-                return 'Hubo un error en la solicitud.'
+                callback('Hubo un error en la solicitud.', null); // Envía el error al callback
             }
         }
     };
